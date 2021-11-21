@@ -75,4 +75,4 @@ Features coming to this package:
 
 ## License
 
-[MIT](LICENSE.md) @ 2019 [Pete Houston](https://petehouston.com).
+[MIT](LICENSE.md) @ 2021 [Gatch GmbH](https://gatch.fun).
