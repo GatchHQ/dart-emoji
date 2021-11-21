@@ -20,7 +20,7 @@ Add this into `pubspec.yaml`
 
 ```
 dependencies:
-  dart_emoji: ^1.0.0
+  dart_emoji: ^0.1.0
 ```
 
 ## API Usage
