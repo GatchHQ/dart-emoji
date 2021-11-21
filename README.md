@@ -1,4 +1,4 @@
-# flutter_emoji
+# dart_emoji
 
 [![Build Status](https://travis-ci.com/petehouston/flutter-emoji.svg?branch=master)](https://travis-ci.com/petehouston/flutter-emoji) [![Coverage](https://codecov.io/gh/petehouston/flutter-emoji/branch/master/graph/badge.svg)](https://codecov.io/gh/petehouston/flutter-emoji)
 
@@ -12,7 +12,7 @@ Add this into `pubspec.yaml`
 
 ```
 dependencies:
-  flutter_emoji: ">= 2.0.0"
+  dart_emoji: ">= 2.0.0"
 ```
 
 ## API Usage
@@ -20,7 +20,7 @@ dependencies:
 First, import the package:
 
 ```
-import 'package:flutter_emoji/flutter_emoji.dart';
+import 'package:dart_emoji/dart_emoji.dart';
 ```
 
 There are two main classes you need to know to handle Emoji text: `Emoji` and `EmojiParser`.
