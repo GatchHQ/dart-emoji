@@ -112,7 +112,8 @@ class EmojiParser {
 
   /// A tweak regexp to pass all Emoji Unicode 11.0
   /// TODO: improve this version, since it does not match the graphical bytes.
-  static final RegExp REGEX_EMOJI = RegExp(r'(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])');
+  static final RegExp REGEX_EMOJI = RegExp(
+      r'(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])');
 
   static final RegExp REGEX_NAME = RegExp(r":([\w-+]+):");
 
@@ -209,9 +210,11 @@ class EmojiParser {
       matches.toList().forEach((m) {
         if (hasEmoji(m.group(0))) {
           result = result.replaceAll(m.group(0), getEmoji(m.group(0)).full);
+
           /// Just a quick hack to clear graphical byte from emoji.
           /// TODO: find better way to get through this tweak
-          result = result.replaceAll(EmojiConst.charNonSpacingMark, EmojiConst.charEmpty);
+          result = result.replaceAll(
+              EmojiConst.charNonSpacingMark, EmojiConst.charEmpty);
         }
       });
       return result;
