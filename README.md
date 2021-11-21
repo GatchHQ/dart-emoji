@@ -2,7 +2,7 @@
 
 👉 A light-weight Emoji 📦 for Dart & Flutter with all up-to-date emojis written in pure Dart 😄 . Made from 💯% ☕ with ❤️!
 
-This a fork from [flutter-emoji](https://pub.dev/packages/flutter_emoji), which is inspired from the [node-emoji](https://github.com/omnidan/node-emoji) package.
+This is a fork from [flutter-emoji](https://pub.dev/packages/flutter_emoji), which is inspired from the [node-emoji](https://github.com/omnidan/node-emoji) package.
 
 ## Why is this a fork from `flutter-emoji`?
 | | `flutter-emoji` | `dart-emoji` |
