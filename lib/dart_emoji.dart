@@ -24,7 +24,7 @@ class EmojiUtil {
   /// Strip colons for emoji name.
   /// So, ':heart:' will become 'heart'.
   ///
-  static String stripColons(String name, [void onError(String message)]) {
+  static String stripColons(String name, [void onError(String message)?]) {
     Iterable<Match> matches = EmojiParser.REGEX_NAME.allMatches(name);
     if (matches.isEmpty) {
       if (onError != null) {
@@ -84,6 +84,10 @@ class Emoji {
 
   @override
   bool operator ==(other) {
+    if (other is! Emoji) {
+      return false;
+    }
+
     return this.name == other.name && this.code == other.code;
   }
 
@@ -187,9 +191,9 @@ class EmojiParser {
     if (matches.isNotEmpty) {
       String result = text;
       matches.toList().forEach((m) {
-        var _e = EmojiUtil.stripColons(m.group(0));
+        var _e = EmojiUtil.stripColons(m.group(0)!);
         if (hasName(_e)) {
-          result = result.replaceAll(m.group(0), get(_e).code);
+          result = result.replaceAll(m.group(0)!, get(_e).code);
         }
       });
       return result;
@@ -208,8 +212,8 @@ class EmojiParser {
     if (matches.isNotEmpty) {
       String result = text;
       matches.toList().forEach((m) {
-        if (hasEmoji(m.group(0))) {
-          result = result.replaceAll(m.group(0), getEmoji(m.group(0)).full);
+        if (hasEmoji(m.group(0)!)) {
+          result = result.replaceAll(m.group(0)!, getEmoji(m.group(0)!).full);
 
           /// Just a quick hack to clear graphical byte from emoji.
           /// todo: find better way to get through this tweak
