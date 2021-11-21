@@ -36,6 +36,28 @@ void main() {
       expect(EmojiUtil.stripNSM(String.fromCharCodes(Runes('\u2764'))),
           String.fromCharCodes(Runes('\u2764')));
     });
+
+    group('.hasTextOnlyEmojis()', () {
+      group('returns true for', () {
+        test('"🚀"', () {
+          expect(EmojiUtil.hasTextOnlyEmojis("🚀"), isTrue);
+        });
+
+        test('"👁👄👁"', () {
+          expect(EmojiUtil.hasTextOnlyEmojis("👁👄👁"), isTrue);
+        });
+      });
+
+      group('returns false for', () {
+        test('"LOL"', () {
+          expect(EmojiUtil.hasTextOnlyEmojis("LOL"), isFalse);
+        });
+
+        test('"😜 P"', () {
+          expect(EmojiUtil.hasTextOnlyEmojis("😜 P"), isFalse);
+        });
+      });
+    });
   });
 
   test('emoji creation & equality', () {

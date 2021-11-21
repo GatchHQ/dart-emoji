@@ -48,6 +48,16 @@ class EmojiUtil {
   /// which is 0xfe0f, or so-called 'Non-Spacing Mark'.
   static String stripNSM(String name) => name.replaceAll(
       RegExp(EmojiConst.charNonSpacingMark), EmojiConst.charEmpty);
+
+  /// Returns true if the given text contains only emojis.
+  ///
+  /// "👋" -> true
+  /// "👋 Hello" -> false
+  static bool hasTextOnlyEmojis(String text) {
+    for (String s in EmojiParser().unemojify(text).split(" "))
+      if (!s.startsWith(":") || !s.endsWith(":")) return false;
+    return true;
+  }
 }
 
 /// The representation of an emoji.
