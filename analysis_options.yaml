@@ -1,19 +1,14 @@
-include: package:pedantic/analysis_options.yaml
-
 linter:
   rules:
-  - always_declare_return_types
-  - camel_case_types
-  - empty_constructor_bodies
-  - annotate_overrides
-  - avoid_init_to_null
-  - one_member_abstracts
-  - slash_for_doc_comments
-  - unnecessary_brace_in_string_interps
+    # We use this linter, because we experienced some crazy bugs, which are
+    # caused by duplicate imports or imports with an absolute import
+    - prefer_relative_imports
 
-analyzer:
-  errors:
-    invalid_assignment: warning
-    missing_return: error
-    dead_code: info
-    todo: info
+    # We try to use much const as possible, to increase the performance of our
+    # app. You will find more information about const and why we should use
+    # const in this YouTube video: https://www.youtube.com/watch?v=B1fIqdqwWw8
+    - prefer_const_constructors
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - prefer_const_constructors_in_immutables
+    - unnecessary_const

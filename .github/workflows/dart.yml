@@ -15,3 +15,15 @@ jobs:
 
       - name: Run tests
         run: dart test
+
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Run analyze
+        run: dart analyze --fatal-infos
