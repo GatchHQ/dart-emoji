@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:flutter_emoji/flutter_emoji.dart';
+import 'package:dart_emoji/dart_emoji.dart';
 
 void main() {
   var emojiParser = EmojiParser();
