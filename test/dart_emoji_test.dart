@@ -8,32 +8,56 @@ void main() {
   var emojiHeart = Emoji('heart', '❤️');
   var emojiFlagUS = Emoji('flag-us', '🇺🇸'); // "flag-us":"🇺🇸"
 
-  test('EmojiUtil.stripColons()', () {
-    expect(EmojiUtil.stripColons('coffee'), 'coffee');
-    expect(
-        EmojiUtil.stripColons('coffee', (error) {
-          expect(error, EmojiMessage.errorMalformedEmojiName);
-        }),
-        'coffee');
-    expect(EmojiUtil.stripColons(':coffee:', (error) {}), 'coffee');
-    expect(EmojiUtil.stripColons(':coff ee:'), ':coff ee:');
-    expect(EmojiUtil.stripColons(':grey_question:'), 'grey_question');
-    expect(EmojiUtil.stripColons('grey_question:'), 'grey_question:');
-    expect(EmojiUtil.stripColons(':e-mail:'), 'e-mail');
-  });
+  group('EmojiUtil', () {
+    test('.stripColons()', () {
+      expect(EmojiUtil.stripColons('coffee'), 'coffee');
+      expect(
+          EmojiUtil.stripColons('coffee', (error) {
+            expect(error, EmojiMessage.errorMalformedEmojiName);
+          }),
+          'coffee');
+      expect(EmojiUtil.stripColons(':coffee:', (error) {}), 'coffee');
+      expect(EmojiUtil.stripColons(':coff ee:'), ':coff ee:');
+      expect(EmojiUtil.stripColons(':grey_question:'), 'grey_question');
+      expect(EmojiUtil.stripColons('grey_question:'), 'grey_question:');
+      expect(EmojiUtil.stripColons(':e-mail:'), 'e-mail');
+    });
 
-  test('EmojiUtil.ensureColons()', () {
-    expect(EmojiUtil.ensureColons('coffee'), ':coffee:');
-    expect(EmojiUtil.ensureColons(':coffee'), ':coffee:');
-    expect(EmojiUtil.ensureColons('coffee:'), ':coffee:');
-    expect(EmojiUtil.ensureColons(':coffee:'), ':coffee:');
-  });
+    test('.ensureColons()', () {
+      expect(EmojiUtil.ensureColons('coffee'), ':coffee:');
+      expect(EmojiUtil.ensureColons(':coffee'), ':coffee:');
+      expect(EmojiUtil.ensureColons('coffee:'), ':coffee:');
+      expect(EmojiUtil.ensureColons(':coffee:'), ':coffee:');
+    });
 
-  test('EmojiUtil.stripNSM()', () {
-    expect(EmojiUtil.stripNSM(String.fromCharCodes(Runes('\u2764\ufe0f'))),
-        String.fromCharCodes(Runes('\u2764')));
-    expect(EmojiUtil.stripNSM(String.fromCharCodes(Runes('\u2764'))),
-        String.fromCharCodes(Runes('\u2764')));
+    test('.stripNSM()', () {
+      expect(EmojiUtil.stripNSM(String.fromCharCodes(Runes('\u2764\ufe0f'))),
+          String.fromCharCodes(Runes('\u2764')));
+      expect(EmojiUtil.stripNSM(String.fromCharCodes(Runes('\u2764'))),
+          String.fromCharCodes(Runes('\u2764')));
+    });
+
+    group('.hasTextOnlyEmojis()', () {
+      group('returns true for', () {
+        test('"🚀"', () {
+          expect(EmojiUtil.hasTextOnlyEmojis("🚀"), isTrue);
+        });
+
+        test('"👁👄👁"', () {
+          expect(EmojiUtil.hasTextOnlyEmojis("👁👄👁"), isTrue);
+        });
+      });
+
+      group('returns false for', () {
+        test('"LOL"', () {
+          expect(EmojiUtil.hasTextOnlyEmojis("LOL"), isFalse);
+        });
+
+        test('"😜 P"', () {
+          expect(EmojiUtil.hasTextOnlyEmojis("😜 P"), isFalse);
+        });
+      });
+    });
   });
 
   test('emoji creation & equality', () {
