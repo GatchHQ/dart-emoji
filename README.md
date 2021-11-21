@@ -12,6 +12,8 @@ This is a fork from [flutter-emoji](https://pub.dev/packages/flutter_emoji), whi
 | Pure Dart Package | ❌ | ✅ |
 | Updated emojis | ❌ | ✅ |
 
+`dart-emoji` is even used in production for our app Gatch. You can get Gatch for [iOS](https://gatch.fun/ios) and [Android](https://gatch.fun/android).
+
 ## Installation
 
 Add this into `pubspec.yaml`
