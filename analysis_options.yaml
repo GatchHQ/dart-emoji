@@ -12,7 +12,3 @@ linter:
     - prefer_const_literals_to_create_immutables
     - prefer_const_constructors_in_immutables
     - unnecessary_const
-
-    # pub.dev subtract you pub score when having more than 80 chars in one line.
-    # Therefore, we should avoid having more than 80 chars in one line.
-    - lines_longer_than_80_chars
