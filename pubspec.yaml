@@ -1,7 +1,7 @@
 name: dart_emoji
-description: "👉 A light-weight Emoji 📦 for Flutter with all up-to-date emojis 😄. Made from 💯% ☕ with ❤️!"
+description: "A light-weight Emoji 📦 for Dart & Flutter with all up-to-date emojis written in pure Dart 😄 . Made from 💯% ☕ with ❤️!"
 version: 2.2.1+1
-homepage: "https://github.com/petehouston/flutter-emoji"
+homepage: "https://github.com/GatchHQ/dart-emoji"
 
 environment:
   sdk: '>=2.12.0 <3.0.0'

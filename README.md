@@ -1,10 +1,16 @@
 # dart_emoji
 
-[![Build Status](https://travis-ci.com/petehouston/flutter-emoji.svg?branch=master)](https://travis-ci.com/petehouston/flutter-emoji) [![Coverage](https://codecov.io/gh/petehouston/flutter-emoji/branch/master/graph/badge.svg)](https://codecov.io/gh/petehouston/flutter-emoji)
+👉 A light-weight Emoji 📦 for Dart & Flutter with all up-to-date emojis written in pure Dart 😄 . Made from 💯% ☕ with ❤️!
 
-👉 A light-weight Emoji 📦 for Flutter with all up-to-date emojis 😄. Made from 💯% ☕ with ❤️!
+This is a fork from [flutter-emoji](https://pub.dev/packages/flutter_emoji), which is inspired from the [node-emoji](https://github.com/omnidan/node-emoji) package.
 
-Inspired from the [node-emoji](https://github.com/omnidan/node-emoji) package.
+## Why is this a fork from `flutter-emoji`?
+| | `flutter-emoji` | `dart-emoji` |
+|-|-|-|
+| Still maintained? | ❌ | ✅ |
+| Null Safety | ❌ | ✅ |
+| Pure Dart Package | ❌ | ✅ |
+| Updated emojis | ❌ | ✅ |
 
 ## Installation
 
@@ -12,7 +18,7 @@ Add this into `pubspec.yaml`
 
 ```
 dependencies:
-  dart_emoji: ">= 2.0.0"
+  dart_emoji: ^1.0.0
 ```
 
 ## API Usage
@@ -59,19 +65,6 @@ All methods will return `Emoji.None` if emoji is not found.
 ```
 parser.get('does_not_exist_emoji_name'); // returns: Emoji.None
 ```
-
-## TODO
-
-Features coming to this package:
-
-- [x] Get detail of an emoji.
-- [x] Refactor for easier usage.
-- [ ] Validate bad input.
-- [ ] Find list of available emojis from a given text.
-- [ ] Replace emoji by another one.
-- [ ] Callback for handling missing emojis on general methods.
-- [ ] Auto-update emoji list.
-- [ ] Make extensible emoji matcher.
 
 ## License
 
