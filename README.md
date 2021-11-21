@@ -58,6 +58,10 @@ parser.getEmoji('❤️'); // returns: Emoji{name="heart", full=":heart:", code=
 
 parser.emojify('I :heart: :coffee:'); // returns: 'I ❤️ ☕'
 parser.unemojify('I ❤️ ☕'); // returns: 'I :heart: :coffee:'
+
+// Check if text contains only emojis
+EmojiUtil.hasTextOnlyEmoji("👋"); // returns true
+EmojiUtil.hasTextOnlyEmoji("👋 Hello"); // returns false
 ```
 
 All methods will return `Emoji.None` if emoji is not found.
