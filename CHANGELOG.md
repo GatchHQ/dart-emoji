@@ -1,3 +1,7 @@
+## 0.2.0
+* BREAKING CHANGE: Rename `EmojiUtils.hasTextOnlyEmojis()` to `EmojiUtils.hasOnlyEmojis()`.
+* Improved `EmojiParser.REGEX_EMOJI` RegExp
+
 ## 0.1.1+2
 
 * Remove installation section from `README.md`
