@@ -1,12 +1,11 @@
+import 'package:dart_emoji/dart_emoji.dart';
 import 'package:test/test.dart';
 
-import 'package:dart_emoji/dart_emoji.dart';
-
 void main() {
-  var emojiParser = EmojiParser();
-  var emojiCoffee = Emoji('coffee', '☕');
-  var emojiHeart = Emoji('heart', '❤️');
-  var emojiFlagUS = Emoji('flag-us', '🇺🇸'); // "flag-us":"🇺🇸"
+  final emojiParser = EmojiParser();
+  final emojiCoffee = Emoji('coffee', '☕');
+  final emojiHeart = Emoji('heart', '❤️');
+  final emojiFlagUS = Emoji('flag-us', '🇺🇸'); // "flag-us":"🇺🇸"
 
   group('EmojiUtil', () {
     test('.stripColons()', () {
@@ -38,30 +37,28 @@ void main() {
     });
 
     group('.hasTextOnlyEmojis()', () {
-      group('returns true for', () {
-        test('"🚀"', () {
-          expect(EmojiUtil.hasTextOnlyEmojis("🚀"), isTrue);
+      void testHasOnlyEmojis(String text, {required bool expected}) {
+        test(text, () {
+          expect(EmojiUtil.hasOnlyEmojis(text), expected);
         });
+      }
 
-        test('"👁👄👁"', () {
-          expect(EmojiUtil.hasTextOnlyEmojis("👁👄👁"), isTrue);
-        });
+      group('returns true for', () {
+        testHasOnlyEmojis('🚀', expected: true);
+        testHasOnlyEmojis('👁👄👁', expected: true);
       });
 
       group('returns false for', () {
-        test('"LOL"', () {
-          expect(EmojiUtil.hasTextOnlyEmojis("LOL"), isFalse);
-        });
-
-        test('"😜 P"', () {
-          expect(EmojiUtil.hasTextOnlyEmojis("😜 P"), isFalse);
-        });
+        testHasOnlyEmojis('lol', expected: false);
+        testHasOnlyEmojis('😜 P', expected: false);
+        testHasOnlyEmojis(':troll:', expected: false);
+        testHasOnlyEmojis('👍 👍', expected: false);
       });
     });
   });
 
   test('emoji creation & equality', () {
-    var coffee = Emoji('coffee', '☕');
+    final coffee = Emoji('coffee', '☕');
 
     expect(emojiCoffee == coffee, true);
 
@@ -76,7 +73,7 @@ void main() {
   });
 
   test('emoji clone', () {
-    var coffee = emojiCoffee.clone();
+    final coffee = emojiCoffee.clone();
 
     expect(coffee == emojiCoffee, true);
   });
@@ -104,7 +101,7 @@ void main() {
   });
 
   test('emoji info', () {
-    var heart = emojiParser.info('heart');
+    final heart = emojiParser.info('heart');
 
     expect(heart is Emoji, true);
 
@@ -142,6 +139,18 @@ void main() {
     // NOTE: both :+1: and :thumbsup: represent same emoji 👍
     // When calling unemojify() only the latter one is mapped.
     expect(emojiParser.unemojify('I 👍 with him'), 'I :thumbsup: with him');
+  });
+
+  group('unemojify', () {
+    void testUnemojify(String emoji, String expectedText) {
+      test(emoji, () {
+        expect(emojiParser.unemojify(emoji), expectedText);
+      });
+    }
+
+    testUnemojify('🚣‍♂️', ':man-rowing-boat:');
+    testUnemojify('🏄‍♂️', ':man-surfing:');
+    testUnemojify('🇵🇹', ':flag-pt:');
   });
 
   test('emoji name includes some special characters', () {
