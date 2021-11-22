@@ -51,8 +51,8 @@ class EmojiUtil {
 
   /// Returns true if the given text contains only emojis.
   ///
-  /// '👋' -> true
-  /// '👋 Hello' -> false
+  /// "👋" -> true
+  /// "👋 Hello" -> false
   static bool hasTextOnlyEmojis(String text) {
     for (String s in EmojiParser().unemojify(text).split(' '))
       if (!s.startsWith(':') || !s.endsWith(':')) return false;
@@ -2088,5 +2088,5 @@ const _emojiMap = <String, String>{
   'wavy_dash': '〰️',
   'part_alternation_mark': '〽️',
   'congratulations': '㊗️',
-  'secret': '㊙️'
+  'secret': '㊙️',
 };
