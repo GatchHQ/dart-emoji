@@ -142,17 +142,15 @@ void main() {
   });
 
   group('unemojify', () {
-    test('🚣‍♂️', () {
-      expect(emojiParser.unemojify('🚣‍♂️'), ':man-rowing-boat:');
-    });
+    void testUnemojify(String emoji, String expectedText) {
+      test(emoji, () {
+        expect(emojiParser.unemojify(emoji), expectedText);
+      });
+    }
 
-    test('🏄‍♂️', () {
-      expect(emojiParser.unemojify('🏄‍♂️'), ':man-surfing:');
-    });
-
-    test('🇵🇹', () {
-      expect(emojiParser.unemojify('🇵🇹'), ':flag-pt:');
-    });
+    testUnemojify('🚣‍♂️', ':man-rowing-boat:');
+    testUnemojify('🏄‍♂️', ':man-surfing:');
+    testUnemojify('🇵🇹', ':flag-pt:');
   });
 
   test('emoji name includes some special characters', () {
