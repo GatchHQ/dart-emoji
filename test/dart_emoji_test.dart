@@ -2,10 +2,10 @@ import 'package:dart_emoji/dart_emoji.dart';
 import 'package:test/test.dart';
 
 void main() {
-  var emojiParser = EmojiParser();
-  var emojiCoffee = Emoji('coffee', '☕');
-  var emojiHeart = Emoji('heart', '❤️');
-  var emojiFlagUS = Emoji('flag-us', '🇺🇸'); // "flag-us":"🇺🇸"
+  final emojiParser = EmojiParser();
+  final emojiCoffee = Emoji('coffee', '☕');
+  final emojiHeart = Emoji('heart', '❤️');
+  final emojiFlagUS = Emoji('flag-us', '🇺🇸'); // "flag-us":"🇺🇸"
 
   group('EmojiUtil', () {
     test('.stripColons()', () {
@@ -37,36 +37,28 @@ void main() {
     });
 
     group('.hasTextOnlyEmojis()', () {
+      void testHasOnlyEmojis(String text, {required bool expected}) {
+        test(text, () {
+          expect(EmojiUtil.hasOnlyEmojis(text), expected);
+        });
+      }
+
       group('returns true for', () {
-        test('🚀', () {
-          expect(EmojiUtil.hasOnlyEmojis("🚀"), isTrue);
-        });
-
-        test('👁👄👁', () {
-          expect(EmojiUtil.hasOnlyEmojis("👁👄👁"), isTrue);
-        });
-
-        test('✅ ✅', () {});
+        testHasOnlyEmojis('🚀', expected: true);
+        testHasOnlyEmojis('👁👄👁', expected: true);
       });
 
       group('returns false for', () {
-        test('lol', () {
-          expect(EmojiUtil.hasOnlyEmojis("lol"), isFalse);
-        });
-
-        test('😜 P', () {
-          expect(EmojiUtil.hasOnlyEmojis("😜 P"), isFalse);
-        });
-
-        test(':troll:', () {
-          expect(EmojiUtil.hasOnlyEmojis(':troll:'), isFalse);
-        });
+        testHasOnlyEmojis('lol', expected: false);
+        testHasOnlyEmojis('😜 P', expected: false);
+        testHasOnlyEmojis(':troll:', expected: false);
+        testHasOnlyEmojis('👍 👍', expected: false);
       });
     });
   });
 
   test('emoji creation & equality', () {
-    var coffee = Emoji('coffee', '☕');
+    final coffee = Emoji('coffee', '☕');
 
     expect(emojiCoffee == coffee, true);
 
@@ -81,7 +73,7 @@ void main() {
   });
 
   test('emoji clone', () {
-    var coffee = emojiCoffee.clone();
+    final coffee = emojiCoffee.clone();
 
     expect(coffee == emojiCoffee, true);
   });
@@ -109,7 +101,7 @@ void main() {
   });
 
   test('emoji info', () {
-    var heart = emojiParser.info('heart');
+    final heart = emojiParser.info('heart');
 
     expect(heart is Emoji, true);
 
