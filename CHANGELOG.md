@@ -1,6 +1,6 @@
 ## 0.1.1+1
 
-* Format code for more pub points
+* Format code for more pub points.
 
 ## 0.1.1
 
