@@ -1,6 +1,5 @@
-import 'package:test/test.dart';
-
 import 'package:dart_emoji/dart_emoji.dart';
+import 'package:test/test.dart';
 
 void main() {
   var emojiParser = EmojiParser();
@@ -40,21 +39,26 @@ void main() {
     group('.hasTextOnlyEmojis()', () {
       group('returns true for', () {
         test('"🚀"', () {
-          expect(EmojiUtil.hasTextOnlyEmojis("🚀"), isTrue);
+          expect(EmojiUtil.hasOnlyEmojis("🚀"), isTrue);
         });
 
         test('"👁👄👁"', () {
-          expect(EmojiUtil.hasTextOnlyEmojis("👁👄👁"), isTrue);
+          expect(EmojiUtil.hasOnlyEmojis("👁👄👁"), isTrue);
         });
+
+        // todo: improve hasOnlyEmojis to treat this as text.
+        // test(':troll:', () {
+        //   expect(EmojiUtil.hasOnlyEmojis(':troll:'), isFalse);
+        // });
       });
 
       group('returns false for', () {
         test('"LOL"', () {
-          expect(EmojiUtil.hasTextOnlyEmojis("LOL"), isFalse);
+          expect(EmojiUtil.hasOnlyEmojis("LOL"), isFalse);
         });
 
         test('"😜 P"', () {
-          expect(EmojiUtil.hasTextOnlyEmojis("😜 P"), isFalse);
+          expect(EmojiUtil.hasOnlyEmojis("😜 P"), isFalse);
         });
       });
     });
