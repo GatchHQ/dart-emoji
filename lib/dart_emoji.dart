@@ -1,5 +1,7 @@
 library dart_emoji;
 
+import 'package:characters/characters.dart';
+
 /// Constants defined for Emoji.
 class EmojiConst {
   static final String charNonSpacingMark = String.fromCharCode(0xfe0f);
@@ -51,7 +53,7 @@ class EmojiUtil {
   ///
   /// "👋" -> true
   /// "👋 Hello" -> false
-  static bool hasTextOnlyEmojis(String text) {
+  static bool hasOnlyEmojis(String text) {
     for (String s in EmojiParser().unemojify(text).split(' '))
       if (!s.startsWith(':') || !s.endsWith(':')) return false;
     return true;
@@ -98,19 +100,20 @@ class Emoji {
 /// Emoji storage and parser.
 /// You will need to instantiate one of this instance to start using.
 class EmojiParser {
-  /// This regex is insane, borrowed from lodash, a Javascript library.
-  ///
-  /// Reference: https://github.com/lodash/lodash/blob/4.16.6/lodash.js#L242
-  ///
-//  static final RegExp REGEX_EMOJI = RegExp(
-//      r'(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe23\u20d0-\u20f0]|\ud83c[\udffb-\udfff])?(?:\u200d(?:[^\ud800-\udfff]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe23\u20d0-\u20f0]|\ud83c[\udffb-\udfff])?)*');
+  static final REGEX_EMOJI = RegExp(
+    r'[\u{1f300}-\u{1f5ff}\u{1f900}-\u{1f9ff}\u{1f600}-\u{1f64f}'
+    r'\u{1f680}-\u{1f6ff}\u{2600}-\u{26ff}\u{2700}'
+    r'-\u{27bf}\u{1f1e6}-\u{1f1ff}\u{1f191}-\u{1f251}'
+    r'\u{1f004}\u{1f0cf}\u{1f170}-\u{1f171}\u{1f17e}'
+    r'-\u{1f17f}\u{1f18e}\u{3030}\u{2b50}\u{2b55}'
+    r'\u{2934}-\u{2935}\u{2b05}-\u{2b07}\u{2b1b}'
+    r'-\u{2b1c}\u{3297}\u{3299}\u{303d}\u{00a9}'
+    r'\u{00ae}\u{2122}\u{23f3}\u{24c2}\u{23e9}'
+    r'-\u{23ef}\u{25b6}\u{23f8}-\u{23fa}\u{200d}]+',
+    unicode: true,
+  );
 
-  /// A tweak regexp to pass all Emoji Unicode 11.0
-  /// todo: improve this version, since it does not match the graphical bytes.
-  static final RegExp REGEX_EMOJI = RegExp(
-      r'(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])');
-
-  static final RegExp REGEX_NAME = RegExp(r':([\w-+]+):');
+  static final REGEX_NAME = RegExp(r':([\w-+]+):');
 
   Emoji get(String name) =>
       _emojisByName[EmojiUtil.stripColons(name)] ?? Emoji.None;
@@ -176,22 +179,34 @@ class EmojiParser {
   /// For example: 'I ❤️ Flutter' => 'I :heart: Flutter'
   ///
   String unemojify(String text) {
-    Iterable<Match> matches = REGEX_EMOJI.allMatches(text);
-    if (matches.isNotEmpty) {
-      String result = text;
-      matches.toList().forEach((m) {
-        if (hasEmoji(m.group(0)!)) {
-          result = result.replaceAll(m.group(0)!, getEmoji(m.group(0)!).full);
+    // Convert to characters in order to properly match grapheme clusters.
+    final characters = Characters(text);
+
+    final buffer = StringBuffer();
+    for (final character in characters) {
+      final match = REGEX_EMOJI.firstMatch(character);
+      if (match != null) {
+        var result = character;
+        if (hasEmoji(match.group(0)!)) {
+          result = result.replaceAll(
+            match.group(0)!,
+            getEmoji(match.group(0)!).full,
+          );
 
           /// Just a quick hack to clear graphical byte from emoji.
           /// todo: find better way to get through this tweak
           result = result.replaceAll(
-              EmojiConst.charNonSpacingMark, EmojiConst.charEmpty);
+            EmojiConst.charNonSpacingMark,
+            EmojiConst.charEmpty,
+          );
         }
-      });
-      return result;
+
+        buffer.write(result);
+      } else {
+        buffer.write(character);
+      }
     }
-    return text;
+    return buffer.toString();
   }
 }
 
