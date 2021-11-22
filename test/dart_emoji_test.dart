@@ -144,6 +144,20 @@ void main() {
     expect(emojiParser.unemojify('I 👍 with him'), 'I :thumbsup: with him');
   });
 
+  group('unemojify', () {
+    test('🚣‍♂️', () {
+      expect(emojiParser.unemojify('🚣‍♂️'), ':man-rowing-boat:');
+    });
+
+    test('🏄‍♂️', () {
+      expect(emojiParser.unemojify('🏄‍♂️'), ':man-surfing:');
+    });
+
+    test('🇵🇹', () {
+      expect(emojiParser.unemojify('🇵🇹'), ':flag-pt:');
+    });
+  });
+
   test('emoji name includes some special characters', () {
     var emoji;
 
