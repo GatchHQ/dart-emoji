@@ -38,27 +38,28 @@ void main() {
 
     group('.hasTextOnlyEmojis()', () {
       group('returns true for', () {
-        test('"🚀"', () {
+        test('🚀', () {
           expect(EmojiUtil.hasOnlyEmojis("🚀"), isTrue);
         });
 
-        test('"👁👄👁"', () {
+        test('👁👄👁', () {
           expect(EmojiUtil.hasOnlyEmojis("👁👄👁"), isTrue);
         });
 
-        // todo: improve hasOnlyEmojis to treat this as text.
-        // test(':troll:', () {
-        //   expect(EmojiUtil.hasOnlyEmojis(':troll:'), isFalse);
-        // });
+        test('✅ ✅', () {});
       });
 
       group('returns false for', () {
-        test('"LOL"', () {
-          expect(EmojiUtil.hasOnlyEmojis("LOL"), isFalse);
+        test('lol', () {
+          expect(EmojiUtil.hasOnlyEmojis("lol"), isFalse);
         });
 
-        test('"😜 P"', () {
+        test('😜 P', () {
           expect(EmojiUtil.hasOnlyEmojis("😜 P"), isFalse);
+        });
+
+        test(':troll:', () {
+          expect(EmojiUtil.hasOnlyEmojis(':troll:'), isFalse);
         });
       });
     });

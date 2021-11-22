@@ -53,9 +53,11 @@ class EmojiUtil {
   ///
   /// "👋" -> true
   /// "👋 Hello" -> false
+  /// ":wave:" --> false
   static bool hasOnlyEmojis(String text) {
-    for (String s in EmojiParser().unemojify(text).split(' '))
-      if (!s.startsWith(':') || !s.endsWith(':')) return false;
+    final parser = EmojiParser();
+    for (final c in Characters(text))
+      if (parser.getEmoji(c) == Emoji.None) return false;
     return true;
   }
 }
