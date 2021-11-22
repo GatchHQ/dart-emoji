@@ -1,3 +1,7 @@
+## 0.1.1+1
+
+* Format code for more pub points.
+
 ## 0.1.1
 
 * Improved performance of emoji mapping.
