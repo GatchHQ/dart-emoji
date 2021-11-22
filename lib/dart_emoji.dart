@@ -54,7 +54,6 @@ class EmojiUtil {
   /// "👋" -> true
   /// "👋 Hello" -> false
   static bool hasOnlyEmojis(String text) {
-    print(EmojiParser().unemojify(text));
     for (String s in EmojiParser().unemojify(text).split(' '))
       if (!s.startsWith(':') || !s.endsWith(':')) return false;
     return true;
