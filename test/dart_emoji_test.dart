@@ -5,7 +5,7 @@ void main() {
   final emojiParser = EmojiParser();
   final emojiCoffee = Emoji('coffee', '☕');
   final emojiHeart = Emoji('heart', '❤️');
-  final emojiFlagUS = Emoji('flag-us', '🇺🇸'); // "flag-us":"🇺🇸"
+  final emojiFlagUS = Emoji('flag-us', '🇺🇸');
 
   group('EmojiUtil', () {
     test('.stripColons()', () {
@@ -46,11 +46,16 @@ void main() {
       group('returns true for', () {
         testHasOnlyEmojis('🚀', expected: true);
         testHasOnlyEmojis('👁👄👁', expected: true);
+        testHasOnlyEmojis('👨🏾‍🦲', expected: true);
+        testHasOnlyEmojis('👨🏾', expected: true);
+        testHasOnlyEmojis('👶🏽', expected: true);
+        testHasOnlyEmojis('👩🏻‍🌾', expected: true);
       });
 
       group('returns false for', () {
         testHasOnlyEmojis('lol', expected: false);
         testHasOnlyEmojis('😜 P', expected: false);
+        testHasOnlyEmojis('>👨🏾‍🦲', expected: false);
         testHasOnlyEmojis(':troll:', expected: false);
         testHasOnlyEmojis('👍 👍', expected: false);
       });
@@ -136,22 +141,10 @@ void main() {
     expect(emojiParser.unemojify('I heart car'), 'I heart car');
     expect(emojiParser.unemojify('I :heart: car'), 'I :heart: car');
 
-    // NOTE: both :+1: and :thumbsup: represent same emoji 👍
-    // When calling unemojify() only the latter one is mapped.
-    expect(emojiParser.unemojify('I 👍 with him'), 'I :thumbsup: with him');
+    expect(emojiParser.unemojify('I 👍 with him'), 'I :+1: with him');
   });
 
-  group('unemojify', () {
-    void testUnemojify(String emoji, String expectedText) {
-      test(emoji, () {
-        expect(emojiParser.unemojify(emoji), expectedText);
-      });
-    }
-
-    testUnemojify('🚣‍♂️', ':man-rowing-boat:');
-    testUnemojify('🏄‍♂️', ':man-surfing:');
-    testUnemojify('🇵🇹', ':flag-pt:');
-  });
+  group('unemojify', () {});
 
   test('emoji name includes some special characters', () {
     var emoji;
