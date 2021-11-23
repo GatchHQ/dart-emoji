@@ -248,7 +248,6 @@ void main() {
     testUnemojify('🇨🇰', ':flag-ck:');
     testUnemojify('🇨🇱', ':flag-cl:');
     testUnemojify('🇨🇲', ':flag-cm:');
-    testUnemojify('🇨🇳', ':cn:');
     testUnemojify('🇨🇳', ':flag-cn:');
     testUnemojify('🇨🇴', ':flag-co:');
     testUnemojify('🇨🇵', ':flag-cp:');
@@ -259,7 +258,6 @@ void main() {
     testUnemojify('🇨🇽', ':flag-cx:');
     testUnemojify('🇨🇾', ':flag-cy:');
     testUnemojify('🇨🇿', ':flag-cz:');
-    testUnemojify('🇩🇪', ':de:');
     testUnemojify('🇩🇪', ':flag-de:');
     testUnemojify('🇩🇬', ':flag-dg:');
     testUnemojify('🇩🇯', ':flag-dj:');
@@ -273,7 +271,6 @@ void main() {
     testUnemojify('🇪🇬', ':flag-eg:');
     testUnemojify('🇪🇭', ':flag-eh:');
     testUnemojify('🇪🇷', ':flag-er:');
-    testUnemojify('🇪🇸', ':es:');
     testUnemojify('🇪🇸', ':flag-es:');
     testUnemojify('🇪🇹', ':flag-et:');
     testUnemojify('🇪🇺', ':flag-eu:');
@@ -282,11 +279,8 @@ void main() {
     testUnemojify('🇫🇰', ':flag-fk:');
     testUnemojify('🇫🇲', ':flag-fm:');
     testUnemojify('🇫🇴', ':flag-fo:');
-    testUnemojify('🇫🇷', ':fr:');
     testUnemojify('🇫🇷', ':flag-fr:');
     testUnemojify('🇬🇦', ':flag-ga:');
-    testUnemojify('🇬🇧', ':gb:');
-    testUnemojify('🇬🇧', ':uk:');
     testUnemojify('🇬🇧', ':flag-gb:');
     testUnemojify('🇬🇩', ':flag-gd:');
     testUnemojify('🇬🇪', ':flag-ge:');
@@ -321,12 +315,10 @@ void main() {
     testUnemojify('🇮🇶', ':flag-iq:');
     testUnemojify('🇮🇷', ':flag-ir:');
     testUnemojify('🇮🇸', ':flag-is:');
-    testUnemojify('🇮🇹', ':it:');
     testUnemojify('🇮🇹', ':flag-it:');
     testUnemojify('🇯🇪', ':flag-je:');
     testUnemojify('🇯🇲', ':flag-jm:');
     testUnemojify('🇯🇴', ':flag-jo:');
-    testUnemojify('🇯🇵', ':jp:');
     testUnemojify('🇯🇵', ':flag-jp:');
     testUnemojify('🇰🇪', ':flag-ke:');
     testUnemojify('🇰🇬', ':flag-kg:');
@@ -335,7 +327,6 @@ void main() {
     testUnemojify('🇰🇲', ':flag-km:');
     testUnemojify('🇰🇳', ':flag-kn:');
     testUnemojify('🇰🇵', ':flag-kp:');
-    testUnemojify('🇰🇷', ':kr:');
     testUnemojify('🇰🇷', ':flag-kr:');
     testUnemojify('🇰🇼', ':flag-kw:');
     testUnemojify('🇰🇾', ':flag-ky:');
@@ -450,7 +441,6 @@ void main() {
     testUnemojify('🇺🇬', ':flag-ug:');
     testUnemojify('🇺🇲', ':flag-um:');
     testUnemojify('🇺🇳', ':flag-un:');
-    testUnemojify('🇺🇸', ':us:');
     testUnemojify('🇺🇸', ':flag-us:');
     testUnemojify('🇺🇾', ':flag-uy:');
     testUnemojify('🇺🇿', ':flag-uz:');
