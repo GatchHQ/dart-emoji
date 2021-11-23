@@ -4,12 +4,10 @@
 .packages
 .pub/
 
-build/
-ios/.generated/
-ios/Flutter/Generated.xcconfig
-ios/Runner/GeneratedPluginRegistrant.*
-
 .idea/
 *.iml
 
 coverage/
+
+# A folder temp scripts
+util/
