@@ -67,7 +67,10 @@ class EmojiUtil {
   /// "👋" -> true
   /// "👋 Hello" -> false
   /// ":wave:" --> false
-  static bool hasOnlyEmojis(String text) {
+  /// "👋👋" -> true
+  /// "👋 👋" -> false (if [ignoreBlanks] is true, result is true)
+  static bool hasOnlyEmojis(String text, {bool ignoreBlanks = false}) {
+    if (ignoreBlanks) text = text.replaceAll(' ', '');
     for (final c in Characters(text))
       if (!REGEX_EMOJI.hasMatch(c)) return false;
     return true;
