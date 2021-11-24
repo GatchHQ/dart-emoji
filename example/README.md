@@ -3,7 +3,7 @@ There are two main classes you need to know to handle Emoji text: `Emoji` and `E
 
 Basically, you need to initialize an instance of `EmojiParser`.
 
-```
+```dart
 var parser = EmojiParser();
 var coffee = Emoji('coffee', '☕');
 var heart  = Emoji('heart', '❤️');
@@ -28,10 +28,14 @@ parser.getEmoji('❤️'); // returns: Emoji{name="heart", full=":heart:", code=
 
 parser.emojify('I :heart: :coffee:'); // returns: 'I ❤️ ☕'
 parser.unemojify('I ❤️ ☕'); // returns: 'I :heart: :coffee:'
+
+// Check if text contains only emojis
+EmojiUtil.hasTextOnlyEmoji("👋"); // returns true
+EmojiUtil.hasTextOnlyEmoji("👋 Hello"); // returns false
 ```
 
 All methods will return `Emoji.None` if emoji is not found.
 
-```
+```dart
 parser.get('does_not_exist_emoji_name'); // returns: Emoji.None
 ```
