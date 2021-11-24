@@ -18,7 +18,7 @@ This is a fork from [flutter-emoji](https://pub.dev/packages/flutter_emoji), whi
 
 First, import the package:
 
-```
+```dart
 import 'package:dart_emoji/dart_emoji.dart';
 ```
 
@@ -26,7 +26,7 @@ There are two main classes you need to know to handle Emoji text: `Emoji` and `E
 
 Basically, you need to initialize an instance of `EmojiParser`.
 
-```
+```dart
 var parser = EmojiParser();
 var coffee = Emoji('coffee', '☕');
 var heart  = Emoji('heart', '❤️');
@@ -59,7 +59,7 @@ EmojiUtil.hasTextOnlyEmoji("👋 Hello"); // returns false
 
 All methods will return `Emoji.None` if emoji is not found.
 
-```
+```dart
 parser.get('does_not_exist_emoji_name'); // returns: Emoji.None
 ```
 
