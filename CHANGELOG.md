@@ -1,9 +1,10 @@
 ## 0.2.0
-* BREAKING CHANGE: Rename `EmojiUtils.hasTextOnlyEmojis()` to `EmojiUtils.hasOnlyEmojis()`.
-* BREAKING CHANGE: Remove duplicated keys for some emojis. See https://github.com/GatchHQ/dart-emoji/pull/25 for the effected emojis.
-* BREAKING CHANGE: Moving `REGEX_EMOJI` from `EmojiParser` to `EmojiUtils`
-* Improved `REGEX_EMOJI` RegExp
-* Supporting more emojis for `EmojiUtils.hasOnlyEmojis()`
+* BREAKING CHANGE: Rename `EmojiUtils.hasTextOnlyEmojis()` to `EmojiUtils.hasOnlyEmojis()`. [#25](https://github.com/GatchHQ/dart-emoji/pull/25)
+* BREAKING CHANGE: Remove duplicated keys for some emojis. See https://github.com/GatchHQ/dart-emoji/pull/25 for the effected emojis. [#25](https://github.com/GatchHQ/dart-emoji/pull/25)
+* BREAKING CHANGE: Moving `REGEX_EMOJI` from `EmojiParser` to `EmojiUtils` [#25](https://github.com/GatchHQ/dart-emoji/pull/25)
+* Improved `REGEX_EMOJI` RegExp [#25](https://github.com/GatchHQ/dart-emoji/pull/25)
+* Supporting more emojis for `EmojiUtils.hasOnlyEmojis()` [#25](https://github.com/GatchHQ/dart-emoji/pull/25)
+* Add parameter `ignoreWhitespace` to `EmojiUtils.hasOnlyEmojis()` [#26](https://github.com/GatchHQ/dart-emoji/pull/26)
 
 ## 0.1.1+2
 

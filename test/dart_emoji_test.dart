@@ -37,9 +37,16 @@ void main() {
     });
 
     group('.hasTextOnlyEmojis()', () {
-      void testHasOnlyEmojis(String text, {required bool expected}) {
+      void testHasOnlyEmojis(
+        String text, {
+        required bool expected,
+        bool ignoreWhitespace = false,
+      }) {
         test(text, () {
-          expect(EmojiUtil.hasOnlyEmojis(text), expected);
+          expect(
+            EmojiUtil.hasOnlyEmojis(text, ignoreWhitespace: ignoreWhitespace),
+            expected,
+          );
         });
       }
 
@@ -58,6 +65,10 @@ void main() {
         testHasOnlyEmojis('>👨🏾‍🦲', expected: false);
         testHasOnlyEmojis(':troll:', expected: false);
         testHasOnlyEmojis('👍 👍', expected: false);
+      });
+
+      group('ignoreWhitespace', () {
+        testHasOnlyEmojis('👍 👍', expected: true, ignoreWhitespace: true);
       });
     });
   });
