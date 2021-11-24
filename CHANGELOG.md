@@ -4,7 +4,7 @@
 * BREAKING CHANGE: Moving `REGEX_EMOJI` from `EmojiParser` to `EmojiUtils` [#25](https://github.com/GatchHQ/dart-emoji/pull/25)
 * Improved `REGEX_EMOJI` RegExp [#25](https://github.com/GatchHQ/dart-emoji/pull/25)
 * Supporting more emojis for `EmojiUtils.hasOnlyEmojis()` [#25](https://github.com/GatchHQ/dart-emoji/pull/25)
-* Add parameter `ignoreBlanks` to `EmojiUtils.hasOnlyEmojis()` [#26](https://github.com/GatchHQ/dart-emoji/pull/26)
+* Add parameter `ignoreWhitespace` to `EmojiUtils.hasOnlyEmojis()` [#26](https://github.com/GatchHQ/dart-emoji/pull/26)
 
 ## 0.1.1+2
 

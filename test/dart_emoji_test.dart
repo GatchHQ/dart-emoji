@@ -40,11 +40,13 @@ void main() {
       void testHasOnlyEmojis(
         String text, {
         required bool expected,
-        bool ignoreBlanks = false,
+        bool ignoreWhitespace = false,
       }) {
         test(text, () {
-          expect(EmojiUtil.hasOnlyEmojis(text, ignoreBlanks: ignoreBlanks),
-              expected);
+          expect(
+            EmojiUtil.hasOnlyEmojis(text, ignoreWhitespace: ignoreWhitespace),
+            expected,
+          );
         });
       }
 
@@ -65,8 +67,8 @@ void main() {
         testHasOnlyEmojis('👍 👍', expected: false);
       });
 
-      group('ignoreBlanks', () {
-        testHasOnlyEmojis('👍 👍', expected: true, ignoreBlanks: true);
+      group('ignoreWhitespace', () {
+        testHasOnlyEmojis('👍 👍', expected: true, ignoreWhitespace: true);
       });
     });
   });
