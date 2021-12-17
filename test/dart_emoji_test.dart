@@ -119,8 +119,6 @@ void main() {
   test('emoji info', () {
     final heart = emojiParser.info('heart');
 
-    expect(heart is Emoji, true);
-
     expect(heart.name, 'heart');
     expect(heart.full, ':heart:');
     expect(heart.code, '❤️');
