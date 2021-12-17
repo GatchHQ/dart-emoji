@@ -1,3 +1,7 @@
+## 0.2.0+1
+
+* Add `pubspec.lock` to `.gitignore` [#29](https://github.com/GatchHQ/dart-emoji/pull/29)
+
 ## 0.2.0
 * BREAKING CHANGE: Rename `EmojiUtils.hasTextOnlyEmojis()` to `EmojiUtils.hasOnlyEmojis()`. [#25](https://github.com/GatchHQ/dart-emoji/pull/25)
 * BREAKING CHANGE: Remove duplicated keys for some emojis. See https://github.com/GatchHQ/dart-emoji/pull/25 for the effected emojis. [#25](https://github.com/GatchHQ/dart-emoji/pull/25)
