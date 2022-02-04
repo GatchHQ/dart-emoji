@@ -2,7 +2,7 @@
 
 👉 A light-weight Emoji 📦 for Dart & Flutter with all up-to-date emojis written in pure Dart 😄 . Made from 💯% ☕ with ❤️!
 
-This is a fork from [flutter_emoji](https://pub.dev/packages/flutter_emoji), which is inspired from the [node-emoji](https://github.com/omnidan/node-emoji) package. The reason for the fork is better maintaining and adding further features, like `EmojiUtil.hasOnlyEmojis()`.
+This is a fork of [flutter_emoji](https://pub.dev/packages/flutter_emoji), which is inspired by the [node-emoji](https://github.com/omnidan/node-emoji) package. The reason for the fork is better maintaining and adding further features, such as `EmojiUtil.hasOnlyEmojis()`.
 
 `dart_emoji` is even used in production for our app Gatch. You can get Gatch for [iOS](https://gatch.fun/ios) and [Android](https://gatch.fun/android).
 
