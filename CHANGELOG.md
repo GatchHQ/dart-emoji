@@ -1,3 +1,7 @@
+## 0.2.0+2
+
+* Remove "Why is this a fork" section from `README.md` [#32](https://github.com/GatchHQ/dart-emoji/pull/32)
+
 ## 0.2.0+1
 
 * Add `pubspec.lock` to `.gitignore` [#29](https://github.com/GatchHQ/dart-emoji/pull/29)
