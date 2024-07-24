@@ -75,6 +75,45 @@ class EmojiUtil {
       if (!REGEX_EMOJI.hasMatch(c)) return false;
     return true;
   }
+
+  /// Returns true if the given text contains both text and emojis.
+  ///
+  /// "👋" -> false
+  /// "👋 Hello" -> true
+  /// ":wave:" --> false
+  /// "👋👋" -> false
+  /// "👋 👋" -> false (if [ignoreWhitespace] is true, result is true)
+
+  static bool hasBothTextAndEmoji(String text,
+      {bool ignoreWhitespace = false}) {
+    if (ignoreWhitespace) text = text.replaceAll(' ', '');
+
+    bool hasEmoji = false;
+    bool hasText = false;
+
+    for (var i = 0; i < text.length; i++) {
+      final char = text[i];
+      final codeUnit = char.codeUnitAt(0);
+
+      if (REGEX_EMOJI.hasMatch(char)) {
+        hasEmoji = true;
+      } else if (!isWhitespace(codeUnit)) {
+        hasText = true;
+      }
+
+      // Early return if both are found
+      if (hasEmoji && hasText) {
+        return true;
+      }
+    }
+
+    // If we reach here, either only emojis or only text (or empty string)
+    return false;
+  }
+
+  static bool isWhitespace(int codeUnit) {
+    return codeUnit <= 0x20; // Check for common whitespace characters
+  }
 }
 
 /// The representation of an emoji.
